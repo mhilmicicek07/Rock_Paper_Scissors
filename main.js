@@ -1,120 +1,150 @@
-/*
-Beraberlik durumları
-r r => draw
-s s => draw
-p p => draw
---------------------
-Kazanma durumları
-r s => win
-s p => win
-p r => win
---------------------
-Kaybetme durumları
-s r => lose
-p s => lose
-r p => lose
-*/
+// DOM Elements
+const userScoreSpan = document.getElementById("userScore");
+const computerScoreSpan = document.getElementById("computerScore");
+const resultDiv = document.getElementById("result");
+const rockDiv = document.getElementById("rock");
+const paperDiv = document.getElementById("paper");
+const scissorsDiv = document.getElementById("scissors");
+const resetBtn = document.querySelector(".reset");
+const scoreBoard = document.querySelector(".score-board");
+const choicesDiv = document.querySelector(".choices");
+const difficultyBtns = document.querySelectorAll(".difficulty-btn");
 
-// DOM ELEMENTS
-const userScoreSpan = document.getElementById("userScore"),
-    computerScoreSpan = document.getElementById("computerScore"),
-    scoreBoard = document.querySelector(".scoreBoard"),
-    resultDiv = document.querySelector("#resullt"),
-    rockDiv = document.querySelector("#rock"),
-    paperDiv = document.querySelector("#paper"),
-    scissorsDiv = document.querySelector("#scissors");
+// Variables
+let userScore = 0;
+let computerScore = 0;
+let winningScore = 5;
 
-// VARIABLES
-let userScore = 0,
-    computerScore = 0;
+// Konfeti Canvas
+const confettiCanvas = document.getElementById("confetti");
+const ctx = confettiCanvas.getContext("2d");
+confettiCanvas.width = window.innerWidth;
+confettiCanvas.height = window.innerHeight;
 
-// ilk olarak benim seçimim, ikinci olarak da bilgisayar seçimi
-/* 
-"rockscissors" => win
-"scissorspaper" => win
-"paperrock" => win
-*/
+// Konfeti parçacıkları
+let confetti = [];
+const colors = ["#e74c3c", "#3498db", "#f1c40f", "#2ecc71", "#9b59b6"];
 
-function win(userChoice, computerChoice) {
-    // kazandığımda puanım artsın
-    userScore++;
-    // bu puanlamadaki değişiklik html'de görüntülensin.
-    userScoreSpan.innerHTML = userScore;
-    // son olarak açıklama ile neden kazandığım anlatılsın
-    resultDiv.innerHTML = `${userChoice} beats ${computerChoice}, you win!`;
-}
+// Konfeti Başlat
+const startConfetti = () => {
+    confetti = Array.from({ length: 300 }, () => ({
+        x: Math.random() * confettiCanvas.width,
+        y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+        r: Math.random() * 6 + 3,
+        d: Math.random() * 10 + 5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        tilt: Math.random() * 10 - 5,
+        tiltAngleIncrement: Math.random() * 0.07 + 0.05,
+        tiltAngle: 0
+    }));
+    animateConfetti();
+    setTimeout(() => confetti = [], 2500);
+};
 
-function lose(userChoice, computerChoice) {
-    // bilgisayarın puanı artsın
-    computerScore++;
-    // bu puanlamadaki değişiklik hmtl'de görüntülensin
-    computerScoreSpan.innerHTML = computerScore;
-    // son olarak açıklama ile neden kaybettiğim anlatılsın
-    resultDiv.innerHTML = `${computerChoice} beats ${userChoice}, you lose...`;
-}
+// Konfeti Animasyonu
+const animateConfetti = () => {
+    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confetti.forEach(p => {
+        p.tiltAngle += p.tiltAngleIncrement;
+        p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+        p.x += Math.sin(0);
+        p.tilt = Math.sin(p.tiltAngle) * 15;
 
-function draw(userChoice, computerChoice) {
-    resultDiv.innerHTML = `You both choosed ${computerChoice} and ${userChoice}, draw!`;
-}
-
-function main() {
-    rockDiv.addEventListener("click", function () {
-        game("rock");
+        ctx.beginPath();
+        ctx.lineWidth = p.r;
+        ctx.strokeStyle = p.color;
+        ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+        ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+        ctx.stroke();
     });
-    paperDiv.addEventListener("click", function () {
-        game("paper");
-    });
-    scissorsDiv.addEventListener("click", function () {
-        game("scissors");
-    });
-}
 
-function getComputedChoice() {
+    if (confetti.length > 0) {
+        requestAnimationFrame(animateConfetti);
+    }
+};
+
+// Random Computer Choice
+const getComputerChoice = () => {
     const choices = ["rock", "paper", "scissors"];
-    let randomNumber = Math.floor(Math.random() * 3);
+    return choices[Math.floor(Math.random() * 3)];
+};
 
-    return choices[randomNumber];
-}
+// Update Score
+const updateScore = (winner, userChoice, computerChoice) => {
+    if (winner === "user") {
+        userScore++;
+        userScoreSpan.textContent = userScore;
+        resultDiv.innerHTML = `<span>${userChoice}</span> beats <span>${computerChoice}</span> 🎉`;
+    }
+    else if (winner === "computer") {
+        computerScore++;
+        computerScoreSpan.textContent = computerScore;
+        resultDiv.innerHTML = `<span>${computerChoice}</span> beats <span>${userChoice}</span> 😢`;
+    }
+    else {
+        resultDiv.innerHTML = `Both chose <span>${userChoice}</span>, It's a Draw 🤝`;
+    }
+    checkWinner();
+};
 
-/*
-Beraberlik durumları
-r r => draw / s s => draw / p p => draw
-Kazanma durumları
-r s => win / s p => win / p r => win
-Kaybetme durumları
-s r => lose / p s => lose / r p => lose
-*/
+// Check Winner
+const checkWinner = () => {
+    if (userScore === winningScore || computerScore === winningScore) {
+        const winner = userScore === winningScore ? "You Won the Game! 🏆" : "Computer Wins the Game 😢";
+        resultDiv.textContent = winner;
+        startConfetti();
+        setTimeout(resetGame, 3000);
+    }
+};
 
-function game(userChoice) {
-    const computerChoice = getComputedChoice();
+// Game Logic
+const game = (userChoice) => {
+    const computerChoice = getComputerChoice();
+    document.querySelectorAll(".choice").forEach(choice => choice.classList.remove("selected"));
+    document.getElementById(userChoice).classList.add("selected");
 
     switch (userChoice + computerChoice) {
         case "paperrock":
         case "rockscissors":
         case "scissorspaper":
-            win(userChoice, computerChoice);
+            updateScore("user", userChoice, computerChoice);
             break;
 
         case "scissorsrock":
         case "paperscissors":
         case "rockpaper":
-            lose(userChoice, computerChoice);
+            updateScore("computer", userChoice, computerChoice);
             break;
 
-        case "rockrock":
-        case "scissorsscissors":
-        case "paperpaper":
-            draw(userChoice, computerChoice);
-            break;
+        default:
+            updateScore("draw", userChoice, computerChoice);
     }
-}
+};
 
-main();
-
-function reset(){
-    resultDiv.innerHTML = "Game Starts Now!";
+// Reset Game
+const resetGame = () => {
     userScore = 0;
     computerScore = 0;
-    userScoreSpan.innerHTML = userScore;
-    computerScoreSpan.innerHTML = computerScore;
-}
+    userScoreSpan.textContent = userScore;
+    computerScoreSpan.textContent = computerScore;
+    resultDiv.textContent = "Game Starts Now!";
+    document.querySelectorAll(".choice").forEach(choice => choice.classList.remove("selected"));
+};
+
+// Zorluk Seçimi
+difficultyBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        winningScore = Number(btn.dataset.score);
+        document.querySelector(".difficulty-container").classList.add("hidden");
+        scoreBoard.classList.remove("hidden");
+        choicesDiv.classList.remove("hidden");
+        resultDiv.classList.remove("hidden");
+        resetBtn.classList.remove("hidden");
+    });
+});
+
+// Event Listeners
+rockDiv.addEventListener("click", () => game("rock"));
+paperDiv.addEventListener("click", () => game("paper"));
+scissorsDiv.addEventListener("click", () => game("scissors"));
+resetBtn.addEventListener("click", resetGame);
