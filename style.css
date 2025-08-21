@@ -1,0 +1,128 @@
+*{
+    margin:0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: monospace;
+}
+
+body {
+    background-color: #001C30;
+    color: white;
+    overflow: hidden;   
+}
+
+header h1 {
+    text-align: center;
+    line-height: 10vh;
+    background-color: whitesmoke;
+    color: black;
+    font-size: 34px;
+}
+
+main {
+    height: 90vh;
+    
+}
+
+main .scoreBoard {
+    border: 5px solid black;
+    width: 25vw;
+    min-height: 150px;
+    margin: 30px auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5,1fr);
+    justify-content: stretch;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 24px;
+    background-color: red;
+    padding: 5px 10px;
+}
+
+.userScore {
+    grid-area: 3 / 1 / 4 / 2;
+    margin-left: -20px;
+}
+.compScore {
+    grid-area: 3 / 5 / 4 / 6;
+    margin-right: -20px;
+    text-align: end;
+}
+
+.userScore {
+    display: block;
+}
+
+.score {
+    grid-area: 1 / 2 / 6 / 5;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+.result {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.choices {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.choices .choice {
+    border: 3px solid white;
+    height: 150px;
+    width: 150px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 300ms ease  ;
+}
+.choices .choice:first-child:hover{
+    cursor: pointer;
+    background-color: green;
+}
+.choices .choice:nth-child(2):hover {
+    cursor: pointer;
+    background-color: red;
+}
+.choices .choice:nth-child(3):hover {
+    cursor: pointer;
+    background-color:steelblue;
+}
+
+.choices .choice img {
+    width: 120px;
+}
+
+.actionMessage {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.reset {
+    width: 150px;
+    height: 50px;
+    border:0;
+    outline:0;
+    font-size: 1.5rem;
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+    cursor: pointer;
+}
