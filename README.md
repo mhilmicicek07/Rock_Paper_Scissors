@@ -1,79 +1,152 @@
-# ✊🖐️✌️ Rock Paper Scissors (Taş - Kağıt - Makas) Oyunu
+# ✊🖐️✌️ Rock Paper Scissors — Taş Kağıt Makas
 
-Bu proje, kullanıcıların bilgisayara karşı **Taş, Kağıt, Makas** oynayabildiği eğlenceli bir web uygulamasıdır.  
-Basit ama dinamik yapısı sayesinde tarayıcı üzerinde hızlı ve etkileşimli bir oyun deneyimi sunar.
-
----
-
-## 🚀 Özellikler
-
-- 🎮 Kullanıcı, **Taş**, **Kağıt** veya **Makas** seçimini yapabilir.  
-- 🤖 Bilgisayar her turda rastgele bir seçim yapar.  
-- ⚖️ Kazanan, kaybeden veya berabere durumları anında ekranda gösterilir.  
-- 🔁 “Tekrar Oyna” seçeneği ile oyun sıfırlanabilir.  
-- 💻 **Responsive (duyarlı)** tasarım ile mobil ve masaüstü cihazlarda sorunsuz oynanabilir.
+Bu dosyada proje açıklamaları üç dilde (Türkçe, English, Deutsch) yer almaktadır. Aşağıdan tercih ettiğiniz dili okuyabilirsiniz.
 
 ---
 
-## 🧩 Kullanılan Teknolojiler
+## Türkçe (TR)
 
-| Teknoloji | Rolü |
-|------------|-------|
-| **HTML5** | Oyunun temel yapısını oluşturur. |
-| **CSS3** | Arayüzü düzenler, renk ve stil sağlar. |
-| **JavaScript (ES6+)** | Oyunun mantığını yönetir (seçim, sonuç hesaplama, skor güncelleme). |
-| **DOM Manipülasyonu** | Oyun sonucunun ve bilgisayar seçiminin dinamik olarak ekrana yansıtılması. |
+### Açıklama
+Basit, responsive bir web uygulaması: bilgisayara karşı Taş-Kağıt-Makas oynanan oyun. Kullanıcı zorluk seçimi yapabilir, skor tutulur ve kazanana konfeti animasyonu gösterilir.
 
----
+### Özellikler
+- Kullanıcı Taş / Kağıt / Makas seçer
+- Bilgisayar rastgele seçim yapar (Math.random)
+- Skor takibi ve kazanana kadar oyun devam eder (zorluk seviyesine göre hedef skor)
+- Kolayca özelleştirilebilir ve geliştirmeye açık
+- Responsive ve modern tasarım
 
-## 📂 Proje Dosya Yapısı
+### Kullanılan Teknolojiler
+- HTML5
+- CSS3
+- JavaScript (ES6+), DOM manipülasyonu
+- Basit canvas tabanlı konfeti animasyonu
 
-📁 Rock_Paper_Scissors
-├── 📁 img 
-    ├── 📄 paper-emoji.png
-    ├── 📄 rock-emoji.png 
-    └── 📄 scissors-emoji.png
-├── 📄 index.html
-├── 📄 main.js
-├── 📄 README.md
-└── 📄 style.css
-
-
----
-
-## ⚙️ Kurulum ve Çalıştırma
-
-Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin:
-
-1. Bu depoyu klonlayın:
-   ```bash
-   git clone https://github.com/mhilmicicek07/Rock_Paper_Scissors.git
-Proje klasörüne geçin:
-
-
+### Kurulum ve Çalıştırma
+1. Depoyu klonlayın:
+```bash
+git clone https://github.com/mhilmicicek07/Rock_Paper_Scissors.git
+```
+2. Proje dizinine girin:
+```bash
 cd Rock_Paper_Scissors
-index.html dosyasını herhangi bir web tarayıcısında açın.
+```
+3. Tarayıcıda `index.html` dosyasını açın:
+- Dosyaya çift tıklayarak veya tarayıcı üzerinden `index.html` yolunu açarak çalıştırabilirsiniz.
 
-Hepsi bu kadar! 🎉
-Artık bilgisayara karşı Taş-Kağıt-Makas oynayabilirsiniz.
+Not: Bu proje herhangi bir sunucu ya da derleme adımı gerektirmez.
 
-🧠 Teknik Açıklama
-script.js dosyası, oyunun tüm dinamik yapısını kontrol eder.
+### Dosya Yapısı
+- index.html — oyun arayüzü
+- main.js — oyun mantığı, skor yönetimi, konfeti animasyonu
+- style.css — stil ve responsive düzen
+- img/ — seçim ikonları (rock/paper/scissors)
 
-Bilgisayar seçimi Math.random() ile rastgele belirlenir.
+### Geliştirme Önerileri
+- Skoru localStorage ile saklama
+- Animasyon ve ses efektleri ekleme
+- Mobil erişilebilirlik iyileştirmeleri
 
-Kullanıcının seçimi, tıklama eventi (click) ile algılanır ve sonuç hesaplanır.
+### Lisans ve Katkı
+Bu proje açık kaynaklıdır. Kodları inceleyebilir, geliştirebilir ve kendi projelerinizde kullanabilirsiniz.
 
-Sonuç, DOM üzerinde anında güncellenir ve ekrana "Kazandınız", "Kaybettiniz" veya "Berabere" olarak yansıtılır.
+Geliştirici: Mehmet Hilmi Çiçek  
+Konum: Geislingen an der Steige
 
-İstenirse skor tutma özelliği veya daha gelişmiş animasyonlar kolayca eklenebilir.
+---
 
-👨‍💻 Geliştirici
-Mehmet Hilmi Çiçek
-💼 Full Stack Web Developer
-📍 Geislingen an der Steige
-💬 “Basitlik, iyi tasarımın özüdür.”
+## English (EN)
 
-🪪 Lisans
-Bu proje açık kaynaklıdır.
-Dileyen herkes kodu inceleyebilir, geliştirebilir veya kendi projelerinde özgürce kullanabilir.
+### Description
+A simple, responsive web app for playing Rock Paper Scissors against the computer. The user chooses a difficulty (target score), picks rock/paper/scissors, and the computer responds with a random choice. Winner triggers a confetti animation.
+
+### Features
+- User selects Rock / Paper / Scissors
+- Computer chooses randomly (Math.random)
+- Score tracking until a player reaches the chosen winning score
+- Easy to extend and customize
+- Responsive styling for mobile and desktop
+
+### Technologies
+- HTML5
+- CSS3
+- JavaScript (ES6+), DOM manipulation
+- Canvas-based confetti animation
+
+### Installation & Run
+1. Clone the repo:
+```bash
+git clone https://github.com/mhilmicicek07/Rock_Paper_Scissors.git
+```
+2. Change directory:
+```bash
+cd Rock_Paper_Scissors
+```
+3. Open `index.html` in your browser:
+- No build or server required; just open the file in any modern browser.
+
+### Project Structure
+- index.html — UI and layout
+- main.js — game logic, score handling, confetti
+- style.css — styles and responsive layout
+- img/ — rock/paper/scissors images
+
+### Ideas for Improvements
+- Persist scores using localStorage
+- Add sound effects and richer animations
+- Improve accessibility for screen readers
+
+### License & Contributing
+Open source — feel free to inspect, modify, and reuse the code. Contributions are welcome.
+
+Author: Mehmet Hilmi Çiçek
+
+---
+
+## Deutsch (DE)
+
+### Beschreibung
+Eine einfache, responsive Webanwendung, um „Schere, Stein, Papier“ gegen den Computer zu spielen. Der Nutzer wählt eine Schwierigkeit (Gewinnpunktzahl), trifft eine Auswahl und der Computer w��hlt zufällig. Beim Sieg erscheint eine Konfetti-Animation.
+
+### Funktionen
+- Nutzer wählt Stein / Papier / Schere
+- Computer wählt zufällig (Math.random)
+- Punktezählung bis zur eingestellten Gewinnzahl
+- Einfach erweiterbar und anpassbar
+- Responsive Design für Mobil und Desktop
+
+### Technologien
+- HTML5
+- CSS3
+- JavaScript (ES6+), DOM-Manipulation
+- Canvas-basierte Konfetti-Animation
+
+### Installation & Ausführung
+1. Repository klonen:
+```bash
+git clone https://github.com/mhilmicicek07/Rock_Paper_Scissors.git
+```
+2. Verzeichnis wechseln:
+```bash
+cd Rock_Paper_Scissors
+```
+3. `index.html` im Browser öffnen:
+- Kein Build oder Server nötig; Datei einfach im Browser öffnen.
+
+### Projektstruktur
+- index.html — Benutzeroberfläche
+- main.js — Spiellogik, Punkteverwaltung, Konfetti
+- style.css — Styling und responsive Layout
+- img/ — Bilder für Stein/Papier/Schere
+
+### Verbesserungsmöglichkeiten
+- Scores mit localStorage persistieren
+- Soundeffekte und erweiterte Animationen hinzufügen
+- Barrierefreiheit (Accessibility) verbessern
+
+### Lizenz & Mitwirken
+Open Source — Code darf eingesehen, angepasst und wiederverwendet werden. Beiträge sind willkommen.
+
+Autor: Mehmet Hilmi Çiçek
+
+---
