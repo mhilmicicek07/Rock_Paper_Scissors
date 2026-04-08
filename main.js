@@ -14,12 +14,18 @@ const difficultyBtns = document.querySelectorAll(".difficulty-btn");
 let userScore = 0;
 let computerScore = 0;
 let winningScore = 5;
+let isGameActive = false;
+let resetTimerId = null;
 
 // Konfeti Canvas
 const confettiCanvas = document.getElementById("confetti");
+const syncConfettiSize = () => {
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+};
 const ctx = confettiCanvas.getContext("2d");
-confettiCanvas.width = window.innerWidth;
-confettiCanvas.height = window.innerHeight;
+syncConfettiSize();
+window.addEventListener("resize", syncConfettiSize);
 
 // Konfeti parçacıkları
 let confetti = [];
@@ -92,13 +98,21 @@ const checkWinner = () => {
     if (userScore === winningScore || computerScore === winningScore) {
         const winner = userScore === winningScore ? "You Won the Game! 🏆" : "Computer Wins the Game 😢";
         resultDiv.textContent = winner;
-        startConfetti();
-        setTimeout(resetGame, 3000);
+        if (userScore === winningScore) {
+            startConfetti();
+        }
+        isGameActive = false;
+        clearTimeout(resetTimerId);
+        resetTimerId = setTimeout(resetGame, 3000);
     }
 };
 
 // Game Logic
 const game = (userChoice) => {
+    if (!isGameActive) {
+        return;
+    }
+
     const computerChoice = getComputerChoice();
     document.querySelectorAll(".choice").forEach(choice => choice.classList.remove("selected"));
     document.getElementById(userChoice).classList.add("selected");
@@ -123,23 +137,30 @@ const game = (userChoice) => {
 
 // Reset Game
 const resetGame = () => {
+    clearTimeout(resetTimerId);
+    resetTimerId = null;
+    isGameActive = true;
     userScore = 0;
     computerScore = 0;
     userScoreSpan.textContent = userScore;
     computerScoreSpan.textContent = computerScore;
     resultDiv.textContent = "Game Starts Now!";
     document.querySelectorAll(".choice").forEach(choice => choice.classList.remove("selected"));
+    confetti = [];
+    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
 };
 
 // Zorluk Seçimi
 difficultyBtns.forEach(btn => {
     btn.addEventListener("click", () => {
         winningScore = Number(btn.dataset.score);
+        resetGame();
         document.querySelector(".difficulty-container").classList.add("hidden");
         scoreBoard.classList.remove("hidden");
         choicesDiv.classList.remove("hidden");
         resultDiv.classList.remove("hidden");
         resetBtn.classList.remove("hidden");
+        isGameActive = true;
     });
 });
 
