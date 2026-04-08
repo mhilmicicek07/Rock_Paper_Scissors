@@ -13,6 +13,8 @@ Basit, responsive bir web uygulaması: bilgisayara karşı Taş-Kağıt-Makas oy
 - Kullanıcı Taş / Kağıt / Makas seçer
 - Bilgisayar rastgele seçim yapar (Math.random)
 - Skor takibi ve kazanana kadar oyun devam eder (zorluk seviyesine göre hedef skor)
+- Oyun bittiğinde ekstra tıklamalar sayılmaz; konfeti yalnızca kullanıcı kazandığında tetiklenir
+- Pencere yeniden boyutlandırıldığında konfeti tuvali otomatik güncellenir
 - Kolayca özelleştirilebilir ve geliştirmeye açık
 - Responsive ve modern tasarım
 
@@ -64,6 +66,8 @@ A simple, responsive web app for playing Rock Paper Scissors against the compute
 - User selects Rock / Paper / Scissors
 - Computer chooses randomly (Math.random)
 - Score tracking until a player reaches the chosen winning score
+- Input locked after a match ends; confetti triggers only when the player wins
+- Confetti canvas resizes with the window
 - Easy to extend and customize
 - Responsive styling for mobile and desktop
 
@@ -106,12 +110,14 @@ Author: Mehmet Hilmi Çiçek
 ## Deutsch (DE)
 
 ### Beschreibung
-Eine einfache, responsive Webanwendung, um „Schere, Stein, Papier“ gegen den Computer zu spielen. Der Nutzer wählt eine Schwierigkeit (Gewinnpunktzahl), trifft eine Auswahl und der Computer w��hlt zufällig. Beim Sieg erscheint eine Konfetti-Animation.
+Eine einfache, responsive Webanwendung, um „Schere, Stein, Papier“ gegen den Computer zu spielen. Der Nutzer wählt eine Schwierigkeit (Gewinnpunktzahl), trifft eine Auswahl und der Computer wählt zufällig. Beim Sieg erscheint eine Konfetti-Animation.
 
 ### Funktionen
 - Nutzer wählt Stein / Papier / Schere
 - Computer wählt zufällig (Math.random)
 - Punktezählung bis zur eingestellten Gewinnzahl
+- Eingaben werden nach Spielende gesperrt; Konfetti erscheint nur beim Sieg des Spielers
+- Konfetti-Canvas passt sich Fenstergrößenänderungen an
 - Einfach erweiterbar und anpassbar
 - Responsive Design für Mobil und Desktop
 

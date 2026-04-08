@@ -90,6 +90,12 @@ h1 {
     transform: scale(1.2);
 }
 
+.choice.selected {
+    transform: scale(1.15);
+    outline: 3px solid #1abc9c;
+    border-radius: 14px;
+}
+
 /* Sonuç Mesajı */
 #result {
     font-size: 1.3rem;
