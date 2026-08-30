@@ -4,6 +4,56 @@ Bu dosyada proje açıklamaları üç dilde (Türkçe, English, Deutsch) yer alm
 
 ---
 
+## English (EN)
+
+### Description
+A simple, responsive web app for playing Rock Paper Scissors against the computer. The user chooses a difficulty (target score), picks rock/paper/scissors, and the computer responds with a random choice. Winner triggers a confetti animation.
+
+### Features
+- User selects Rock / Paper / Scissors
+- Computer chooses randomly (Math.random)
+- Score tracking until a player reaches the chosen winning score
+- Input locked after a match ends; confetti triggers only when the player wins
+- Confetti canvas resizes with the window
+- Easy to extend and customize
+- Responsive styling for mobile and desktop
+
+### Technologies
+- HTML5
+- CSS3
+- JavaScript (ES6+), DOM manipulation
+- Canvas-based confetti animation
+
+### Installation & Run
+1. Clone the repo:
+```bash
+git clone https://github.com/mhilmicicek07/Rock_Paper_Scissors.git
+```
+2. Change directory:
+```bash
+cd Rock_Paper_Scissors
+```
+3. Open `index.html` in your browser:
+- No build or server required; just open the file in any modern browser.
+
+### Project Structure
+- index.html — UI and layout
+- main.js — game logic, score handling, confetti
+- style.css — styles and responsive layout
+- img/ — rock/paper/scissors images
+
+### Ideas for Improvements
+- Persist scores using localStorage
+- Add sound effects and richer animations
+- Improve accessibility for screen readers
+
+### License & Contributing
+Open source — feel free to inspect, modify, and reuse the code. Contributions are welcome.
+
+Author: Mehmet Hilmi Çiçek
+
+---
+
 ## Türkçe (TR)
 
 ### Açıklama
@@ -54,58 +104,6 @@ Bu proje açık kaynaklıdır. Kodları inceleyebilir, geliştirebilir ve kendi 
 
 Geliştirici: Mehmet Hilmi Çiçek  
 Konum: Geislingen an der Steige
-
----
-
-## English (EN)
-
-### Description
-A simple, responsive web app for playing Rock Paper Scissors against the computer. The user chooses a difficulty (target score), picks rock/paper/scissors, and the computer responds with a random choice. Winner triggers a confetti animation.
-
-### Features
-- User selects Rock / Paper / Scissors
-- Computer chooses randomly (Math.random)
-- Score tracking until a player reaches the chosen winning score
-- Input locked after a match ends; confetti triggers only when the player wins
-- Confetti canvas resizes with the window
-- Easy to extend and customize
-- Responsive styling for mobile and desktop
-
-### Technologies
-- HTML5
-- CSS3
-- JavaScript (ES6+), DOM manipulation
-- Canvas-based confetti animation
-
-### Installation & Run
-1. Clone the repo:
-```bash
-git clone https://github.com/mhilmicicek07/Rock_Paper_Scissors.git
-```
-2. Change directory:
-```bash
-cd Rock_Paper_Scissors
-```
-3. Open `index.html` in your browser:
-- No build or server required; just open the file in any modern browser.
-
-### Project Structure
-- index.html — UI and layout
-- main.js — game logic, score handling, confetti
-- style.css — styles and responsive layout
-- img/ — rock/paper/scissors images
-
-### Ideas for Improvements
-- Persist scores using localStorage
-- Add sound effects and richer animations
-- Improve accessibility for screen readers
-
-### License & Contributing
-Open source — feel free to inspect, modify, and reuse the code. Contributions are welcome.
-
-Author: Mehmet Hilmi Çiçek
-
----
 
 ## Deutsch (DE)
 
